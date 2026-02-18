@@ -1,56 +1,52 @@
-<html>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Super Mario World - Super Nintendo | Batocera Online </title>
-    <link rel="icon" href="docs/favicon.ico" sizes="16x16 32x32 48x48 64x64" type="image/vnd.microsoft.icon">
+    <meta charset="UTF-8">
+    <title>Super Mario World - SNES | Batocera Online</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="imagem/favicon.png">
-    <meta name="description" content="Jogue Super Mario World online no seu navegador! Reviva a nostalgia do clássico do Super Nintendo sem precisar baixar ROMs. Diversão garantida!">
-    <meta name="keywords" content="Super Mario World, SNES, Super Nintendo, jogo online, emulador SNES, ROM, clássico SNES, jogos retrô, jogos antigos, diversão online, navegador, sem download">
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://cdn.emulatorjs.org">
 </head>
 
-<div id="top">
-    <header>
-        <img src="../imagem/logo.png" alt="Logo" class="logo">
-        <nav>
-            <ul>
-                <li><a href="../../">Início</a></li>
-                <li><a href="../../emulador">Use Sua Rom</a></li>
-            </ul>
-        </nav>
-    </header>
-    <h1>Super Mario World - Super Nintendo</h1>
-</div>
+<body>
+    <div id="top">
+        <header>
+            <img src="../imagem/logo.png" alt="Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="../../">Início</a></li>
+                    <li><a href="../../emulador">Use Sua Rom</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Super Mario World - Super Nintendo</h1>
+    </div>
 
-<body onload="requestFullScreen()">
-    <div id="game"></div>
+    <div id="game-container" style="width: 100%; max-width: 800px; height: 600px; margin: 0 auto;">
+        <div id="game"></div>
+    </div>
 
     <script type='text/javascript'>
-        function requestFullScreen() {
+        // Configurações otimizadas
+        var EJS_player = '#game';
+        var EJS_core = 'snes'; // O EmulatorJS já usa WebAssembly internamente para SNES
+        var EJS_gameUrl = '/roms/Super Mario World (USA).zip';
+        var EJS_pathtodata = 'https://cdn.emulatorjs.org/latest/data/';
+        
+        // Melhora a performance desativando recursos desnecessários
+        var EJS_startOnLoaded = true;
+        var EJS_DEBUG_XX = false;
+        var EJS_AdUrl = ''; // Garante que não tente carregar ads externos
+        
+        // Função de tela cheia disparada por clique (navegadores modernos bloqueiam onload)
+        function startFullscreen() {
             let elem = document.documentElement;
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.mozRequestFullScreen) {
-                elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) {
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-                elem.msRequestFullscreen();
-            }
+            if (elem.requestFullscreen) elem.requestFullscreen();
         }
-        EJS_player = '#game';
-        EJS_core = 'snes';
-        EJS_lightgun = false;
-        EJS_color = "#0097c4";
-        EJS_backgroundColor = "#000";
-        EJS_biosUrl = '';
-        EJS_gameUrl = '/roms/Super Mario World (USA).zip';
-        EJS_pathtodata = 'https://cdn.emulatorjs.org/latest/data/';
-        EJS_startOnLoaded = true;
     </script>
-    <script src="rom.js"></script>
-    <script src='../../data/loader.js'></script>
+
+    <script async src='../../data/loader.js'></script>
 </body>
 </html>
