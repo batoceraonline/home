@@ -2,61 +2,41 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Ball Bullet Gun - Super Nintendo | Batocera Online</title>
-    <link rel="icon" href="docs/favicon.ico" sizes="16x16 32x32 48x48 64x64" type="image/vnd.microsoft.icon">
+    <title>Teste Local - Batocera Online</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="imagem/favicon.png">
-    <meta name="description" content="Jogue Ball Bullet Gun online no seu navegador! Reviva a nostalgia do clássico do Super Nintendo sem precisar baixar ROMs. Diversão garantida!">
-    <meta name="keywords" content="Ball Bullet Gun, SNES, Super Nintendo, jogo online, emulador SNES, ROM, clássico SNES, jogos retrô, jogos antigos, diversão online, navegador, sem download">
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Script de aviso para consoles -->
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const ua = navigator.userAgent;
-            if (ua.includes("PlayStation") || ua.includes("Xbox") || ua.includes("Nintendo")) {
-                const aviso = document.createElement('div');
-                aviso.style.background = '#ff4444';
-                aviso.style.color = '#fff';
-                aviso.style.padding = '10px';
-                aviso.style.textAlign = 'center';
-                aviso.style.fontFamily = 'sans-serif';
-                aviso.style.fontSize = '14px';
-                aviso.innerText = "Atenção: Navegadores de consoles possuem limitações de hardware/memória para emuladores web. Se o jogo fechar ou travar, tente acessar por um PC ou celular.";
-                document.body.prepend(aviso);
-            }
-        });
-    </script>
+    <style>
+        body { margin: 0; padding: 0; background: #000; color: #fff; font-family: sans-serif; overflow: hidden; }
+        #game { width: 100vw; height: 100vh; }
+        #top { position: absolute; top: 10px; width: 100%; text-align: center; pointer-events: none; }
+    </style>
 </head>
 <body>
 
     <div id="top">
-        <header>
-            <img src="../imagem/logo.png" alt="Logo" class="logo">
-            <nav>
-                <ul>
-                    <li><a href="../../">Início</a></li>
-                    <li><a href="../../emulador">Use Sua Rom</a></li>
-                </ul>
-            </nav>
-        </header>
-        <h1>Ball Bullet Gun - Super Nintendo</h1>
+        <h1>Teste de ROM Local</h1>
+        <p>Carregando jogo a partir do servidor próprio...</p>
     </div>
 
     <div id="game"></div>
 
     <script type='text/javascript'>
+        // Configurações do EmulatorJS
         EJS_player = '#game';
-        EJS_core = 'snes';
+        EJS_core = 'snes'; // Altere se o jogo for de outro console
         EJS_lightgun = false;
         EJS_color = "#0097c4";
         EJS_backgroundColor = "#000";
-        EJS_biosUrl = '';
-        EJS_gameUrl = '/roms/Ball Bullet Gun (Japan) [T-En by Aeon Genesis v1.00].zip';
+        
+        // Caminho local para o seu arquivo
+        EJS_gameUrl = 'teste.zip'; 
+        
+        // Caminho CDN para o loader do emulador
         EJS_pathtodata = 'https://cdn.emulatorjs.org/latest/data/';
+        
         EJS_startOnLoaded = true;
     </script>
-    <script src="rom.js"></script>
-    <script src='../../data/loader.js'></script>
+    
+    <!-- O script do loader deve vir depois da configuração -->
+    <script src='https://cdn.emulatorjs.org/latest/data/loader.js'></script>
 </body>
 </html>
